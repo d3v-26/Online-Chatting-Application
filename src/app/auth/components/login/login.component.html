@@ -1,0 +1,102 @@
+<div class="main">
+  <div class="wrapper">
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+			<form [formGroup]="loginForm" (submit)= "onLoginSubmit()">
+				<mat-form-field class="group ff" style="padding-top: 20px;">
+					<!--<mat-label>Username</mat-label>
+					<input id="user" type="text" class="input" formControlName="username">-->
+					<input matInput formControlName="loginUsername" placeholder="Username">
+					<mat-hint>Enter Your Username</mat-hint>
+					<mat-error *ngIf="loginUsername.hasError('required')">
+						Username is <strong>required</strong>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="group ff" style="padding-top: 20px;">
+					<mat-label>Password</mat-label>
+					<!--<input id="user" type="text" class="input" formControlName="username">-->
+					<input matInput type="password" formControlName="loginPassword">
+					<mat-hint>Enter Your Password</mat-hint>
+					<mat-error *ngIf="loginPassword.hasError('required')">
+						Password is <strong>required</strong>
+					</mat-error>
+				</mat-form-field>
+				<div class="group ff" style="padding-top: 20px;">
+					<mat-checkbox>Remember Me</mat-checkbox>
+					<!--<label for="check"><span class="icon"></span> Keep me Signed in</label>-->
+				</div>
+				<div class="group ff">
+					<!--<input class="button" value="Sign In">-->
+					<button type="submit" style="outline: none;" mat-raised-button color="primary">Sign In</button>
+				</div>
+			</form>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<button mat-button style="outline: none;" (click)="this.router.navigate(['/reset-password'])">Forgot Password?</button>
+				</div>
+			
+			</div>
+			<div class="sign-up-htm">
+			<form [formGroup]="registerForm" (submit)= "onRegisterSubmit()">
+				<mat-form-field class="group ff">
+					<!--<mat-label>Username</mat-label>
+					<input id="user" type="text" class="input" formControlName="username">-->
+					<input matInput formControlName="registerUsername" placeholder="Username">
+					<mat-hint>Enter Your Username</mat-hint>
+					<mat-error *ngIf="registerUsername.hasError('required')">
+						Username is <strong>required</strong>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="group ff">
+					<mat-label>Password</mat-label>
+					<!--<input id="user" type="text" class="input" formControlName="username">-->
+					<input matInput type="password" formControlName="registerPassword"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+					<mat-hint>Enter Your Password</mat-hint>
+					<mat-error *ngIf="registerPassword.hasError('required')">
+						Password is <strong>required</strong>
+					</mat-error>
+					<mat-error *ngIf="registerPassword.hasError('pattern')"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</mat-error>
+				</mat-form-field>
+				<mat-form-field class="group ff">
+					<mat-label>Repeat Password</mat-label>
+					<!--<input id="user" type="text" class="input" formControlName="username">-->
+					<input matInput type="password" formControlName="registerRpassword" pattern="{{ registerPassword.value }}">
+					<mat-hint>Confirm Your Entered Password</mat-hint>
+					<mat-error *ngIf="registerRpassword.hasError('required')">
+						Password is <strong>required</strong>
+					</mat-error>
+					<mat-error *ngIf="registerRpassword.hasError('pattern')">
+						This Field Must Be equal to <strong>Password</strong>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="group ff">
+					<mat-label>Email</mat-label>
+					<!--<input id="user" type="text" class="input" formControlName="username">-->
+					<input matInput type="email" formControlName="registerEmail">
+					<mat-hint>Enter Your Email</mat-hint>
+					<mat-error *ngIf="registerEmail.hasError('required')">
+						Email is <strong>required</strong>
+					</mat-error>					
+					<mat-error *ngIf="registerEmail.hasError('email')">
+						Email is <strong>Invalid</strong>
+					</mat-error>
+				</mat-form-field>
+				<div class="group">
+					<button type="submit" style="outline: none;" mat-raised-button color="primary">Sign Up</button>
+				</div>
+			</form>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<label for="tab-1">Already Member?</label>
+				</div>
+			
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
